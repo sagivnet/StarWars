@@ -1,1 +1,19 @@
-<p>details works!</p>
+<h1> {{element? element.title? element.title: element.name : null}} </h1>
+
+<ul>
+    <li *ngFor="let item of elementStrings ">
+        <b>{{item.key}}</b> : {{item.value}}
+    </li>
+
+    <li *ngFor="let item of elementLinks  ">
+        <b>{{item.key}}</b>
+        <br/> 
+        <ul>
+            <li *ngFor="let link of item.value" (click)="onSelect(item.key, link)">
+                {{link.name?link.name : link.title}}
+                <br/>
+            </li>
+        </ul>
+    </li>
+
+</ul>

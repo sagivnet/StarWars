@@ -17,4 +17,8 @@ export class HomeComponent implements OnInit {
    this.starwarsService.get().res.then(res => this.films = res.results);
   }
 
+  onSelect(film) {
+    this.router.navigate(['/films', film.episode_id]);
+  }
+
 }

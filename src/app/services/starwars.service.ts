@@ -19,10 +19,12 @@ export class StarwarsService {
     var category = url.substr(0,url.indexOf('/'));
     var id =  url.substr(url.indexOf('/')+1,url.lastIndexOf('/') -url.indexOf('/')-1 )
 
+    //patch
+    category = category === 'characters'? 'people' : category
     
     let promise = this.apiService.get(url)
     promise.toPromise().then(res => {
-        if(category == 'films'){
+        if(category == 'films' && !id  ){
             this.data[category] = res.results.map(e => {
                 e.id = e.episode_id;
                 return e;
@@ -38,10 +40,15 @@ export class StarwarsService {
  }
 
  getLocaly(category, id) {
-
-  if(this.data[category] ){
-    return this.data[category].find(e => e.id === id)
-  }
-  return undefined;
- }
+    let element;
+    if(this.data[category]){
+        let element =  this.data[category].find(e => e.id === id);
+        if (!element) {
+            // get request
+            let url = 'https://swapi.dev/api/'+ category +'/'+id;
+            return //TODO:
+        }
+    }
+    return element;
+    }
 }

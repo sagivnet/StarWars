@@ -8,6 +8,12 @@ const routes: Routes = [
   { path: 'films', component: HomeComponent },
   { path: 'films/:id', component: DetailsComponent },
   { path: 'characters/:id', component: DetailsComponent },
+  { path: 'people/:id', component: DetailsComponent },
+  { path: 'planets/:id', component: DetailsComponent },
+  { path: 'startships/:id', component: DetailsComponent },
+  { path: 'vehicles/:id', component: DetailsComponent },
+  { path: 'species/:id', component: DetailsComponent },
+  { path: 'residents/:id', component: DetailsComponent },
   { path: '**', component: HomeComponent },
 ];
 
