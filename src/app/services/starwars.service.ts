@@ -34,7 +34,7 @@ export class StarwarsService {
             this.data[category]? this.data[category].push(res) : this.data[category] = [res]
         }
 
-    })
+    }).catch(error => console.log(error))
 
      return {res: promise.toPromise(), id}
  }
