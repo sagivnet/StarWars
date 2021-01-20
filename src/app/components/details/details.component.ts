@@ -18,7 +18,8 @@ export class DetailsComponent implements OnInit {
   ngOnInit(): void {
     let id: number = parseInt(this.route.snapshot.paramMap.get('id'));
     let category: string = this.router.url.substring(1,this.router.url.lastIndexOf('/'));
-    category = category == 'characters'? 'people' : category
+    category = category == 'characters'? 'people' : 
+    category = category === 'residents'? 'people' : category
     this.element = this.starwarsService.getLocaly(category, id)
     if(!this.element) {
       let url = 'https://swapi.dev/api/'+ category +'/'+id+'/';
@@ -43,10 +44,10 @@ export class DetailsComponent implements OnInit {
                 if (key == 'title' || key == 'image' || key == 'url') break;
                 let date ;
     
-                try {
-                  date = new Date(value)
-                } catch (e) { }
-                if (!isNaN(date)){
+               
+                date = new Date(value)
+               
+                if (!isNaN(date) && value.indexOf('-')!=-1){
                   date = ((date.getMonth() > 8) ? (date.getMonth() + 1) : ('0' + (date.getMonth() + 1))) + '/' + ((date.getDate() > 9) ? date.getDate() : ('0' + date.getDate())) + '/' + date.getFullYear()
                   this.elementStrings.push({key, value:date});
                 } else {

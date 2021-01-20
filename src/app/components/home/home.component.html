@@ -1,3 +1,7 @@
 <ul>
-    <li (click)="onSelect(film)" *ngFor="let film of films"> {{film.title}} </li>
+    <li *ngFor="let film of films">
+        <button (click)="onLike(film)">Like</button>
+        {{film.like == 2? "Like - " :film.like == 1? 'Liked Before - ' :'No Like - '}}
+        <span (click)="onSelect(film)">{{film.title}}</span> 
+    </li>
 </ul>

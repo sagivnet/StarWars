@@ -21,6 +21,8 @@ export class StarwarsService {
 
     //patch
     category = category === 'characters'? 'people' : category
+    category = category === 'residents'? 'people' : category
+
     
     let promise = this.apiService.get(url)
     promise.toPromise().then(res => {
@@ -42,12 +44,7 @@ export class StarwarsService {
  getLocaly(category, id) {
     let element;
     if(this.data[category]){
-        let element =  this.data[category].find(e => e.id === id);
-        if (!element) {
-            // get request
-            let url = 'https://swapi.dev/api/'+ category +'/'+id;
-            return //TODO:
-        }
+        element =  this.data[category].find(e => e.id === id);
     }
     return element;
     }
