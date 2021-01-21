@@ -21,8 +21,7 @@ export class DetailsComponent implements OnInit {
     let id: number = parseInt(this.route.snapshot.paramMap.get('id'));
     let category: string = this.router.url.substring(1,this.router.url.lastIndexOf('/'));
 
-    // if not found send a get request
-    if(!this.element) {
+    
       let url = 'https://swapi.dev/api/'+ category +'/'+id+'/';
       this.starwarsService.get(url).res
       .then(res =>{
@@ -37,9 +36,8 @@ export class DetailsComponent implements OnInit {
         console.log(err);
         this.router.navigate(['/error','server_connection_error']);
       }) 
-    } else {
-      this.updateInfo()
-    }
+   
+    
   }
 
   // Select Event
@@ -71,8 +69,10 @@ export class DetailsComponent implements OnInit {
            
             for (let link of <Array<string>> value) {
               // get link info
-              let promise = this.starwarsService.get(link).res
-              let id = this.starwarsService.get(link).id
+              
+              let response = this.starwarsService.get(link);
+              let promise = response.res;
+              let id = response.id;
 
               promise.then(result => {
                 result.id=id;    

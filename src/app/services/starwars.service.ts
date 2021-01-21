@@ -15,7 +15,6 @@ export class StarwarsService {
     // extract parameters
     var pattern = "api/";
     var url = fullUrl.substr(fullUrl.indexOf(pattern)+ pattern.length); 
-    var category = url.substr(0,url.indexOf('/'));
     var id =  url.substr(url.indexOf('/')+1,url.lastIndexOf('/') -url.indexOf('/')-1 )
 
     

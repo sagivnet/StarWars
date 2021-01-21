@@ -20,7 +20,6 @@ export class ApiService {
   createHeaders(): HttpHeaders {
     return new HttpHeaders()
       .set('content-type', 'application/json')
-      .set('content-type', 'text/html')
   }
 
   get(path: string): Observable<any> {
