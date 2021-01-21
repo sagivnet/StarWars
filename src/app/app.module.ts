@@ -6,6 +6,10 @@ import { AppComponent } from './app.component';
 import { HomeComponent } from './components/home/home.component';
 import { DetailsComponent } from './components/details/details.component';
 import { CookieService } from 'ngx-cookie-service';
+import {MatButtonModule} from '@angular/material/button';
+import {MatToolbarModule} from '@angular/material/toolbar';
+import {MatIconModule} from '@angular/material/icon';
+import {MatListModule} from '@angular/material/list';
 
 @NgModule({
   declarations: [
@@ -17,6 +21,10 @@ import { CookieService } from 'ngx-cookie-service';
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
+    MatButtonModule,
+    MatToolbarModule,
+    MatIconModule,
+    MatListModule
   ],
   providers: [CookieService],
   bootstrap: [AppComponent]

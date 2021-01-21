@@ -1,7 +1,9 @@
-<div class="navbar">
-  <button routerLink="/films">All Films</button>
-  <button>Favorite Films</button>
-
-</div>
+<mat-toolbar [color]="'primary'">
+  <button routerLink="/films" mat-icon-button class="example-icon" aria-label="Example icon-button with menu icon">
+    <mat-icon>home</mat-icon>
+  </button>
+  <span class="example-spacer"></span>
+  <span>Starwars Information</span>
+</mat-toolbar>
 
 <router-outlet></router-outlet>
