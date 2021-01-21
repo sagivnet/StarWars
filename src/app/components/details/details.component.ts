@@ -19,8 +19,9 @@ export class DetailsComponent implements OnInit {
   ngOnInit(): void {
     let id: number = parseInt(this.route.snapshot.paramMap.get('id'));
     let category: string = this.router.url.substring(1,this.router.url.lastIndexOf('/'));
-    category = category == 'characters'? 'people' : 
-    category = category === 'residents'? 'people' : category
+
+    category = category == 'characters'? 'people' : category === 'residents'? 'people' : category === 'homeworld'? 'planets' :  category
+
     this.element = this.starwarsService.getLocaly(category, id)
     if(!this.element) {
       let url = 'https://swapi.dev/api/'+ category +'/'+id+'/';
@@ -36,6 +37,14 @@ export class DetailsComponent implements OnInit {
   }
   onSelect (key, link){
     this.router.navigate(['/'+key, link.id]);
+  }
+
+  formatTitle(title: string){
+    var splitStr =  title.replace('_', ' ').toLowerCase().split(' ');
+   for (var i = 0; i < splitStr.length; i++) {
+       splitStr[i] = splitStr[i].charAt(0).toUpperCase() + splitStr[i].substring(1);     
+   }
+   return splitStr.join(' '); 
   }
 
   private updateInfo(){
@@ -55,9 +64,19 @@ export class DetailsComponent implements OnInit {
             
           case 'string': 
             if (key == 'title' || key == 'image' || key == 'url') break;
-            let date ;
 
-           
+            console.log(value)
+            if(value.search('http') != -1){
+              let promise = this.starwarsService.get(value).res
+              let id = this.starwarsService.get(value).id
+              promise.then(result => {
+                result.id=id;    
+                this.elementLinks.push({key, value: [result]})
+              });
+              break; 
+            }
+            
+            let date ;
             date = new Date(value)
            
             if (!isNaN(date) && value.indexOf('-')!=-1){

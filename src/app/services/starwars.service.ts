@@ -20,8 +20,7 @@ export class StarwarsService {
     var id =  url.substr(url.indexOf('/')+1,url.lastIndexOf('/') -url.indexOf('/')-1 )
 
     //patch
-    category = category === 'characters'? 'people' : category
-    category = category === 'residents'? 'people' : category
+    category = category == 'characters'? 'people' : category === 'residents'? 'people' : category === 'homeworld'? 'planets' :  category
 
     
     let promise = this.apiService.get(url)

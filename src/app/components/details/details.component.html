@@ -1,19 +1,42 @@
 <h1> {{element? element.title? element.title: element.name : null}} </h1>
 
+<!-- 
+<mat-list>
+    <div mat-list-item *ngFor="let item of elementStrings">
+       <b>{{item.key}}</b>: {{item.value}}
+    </div>
+  </mat-list> -->
+<!-- 
+<mat-list>
+    <mat-list-item>
+      <div matLine>Item </div>
+      <div matLine>1</div>
+      <div matListIcon>icon</div>
+      <div matListAvatar>Avatar</div>
+    </mat-list-item>
+    <div matSubheader>Section 1</div>
+    <a mat-list-item>
+      <span>Item 2</span>
+    </a>
+    <button mat-list-item>Item 3</button>
+    <div matSubheader>Section 2</div>
+  </mat-list> -->
+
 <ul>
     <li *ngFor="let item of elementStrings ">
-        <b>{{item.key}}</b> : {{item.value}}
+        <h2>{{formatTitle(item.key)}}</h2> {{item.value}}
     </li>
 
     <li *ngFor="let item of elementLinks  ">
-        <b>{{item.key}}</b>
-        <br/> 
+        <h2>{{formatTitle(item.key)}}</h2>
         <ul>
-            <li *ngFor="let link of item.value" (click)="onSelect(item.key, link)">
-                {{link.name?link.name : link.title}}
+            <li class="link" *ngFor="let link of item.value" (click)="onSelect(item.key, link)">
+                <a>{{link.name?link.name : link.title}}</a>
                 <br/>
             </li>
         </ul>
     </li>
 
 </ul>
+
+

@@ -23,7 +23,11 @@ export class HomeComponent implements OnInit {
        }
        return film;
      })
-    });
+    })
+    .catch(err => {
+      console.log(err);
+      this.router.navigate(['/error','server_connection_error']);
+    }) 
   }
 
   onSelect(film) {

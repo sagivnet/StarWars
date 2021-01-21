@@ -1,0 +1,20 @@
+h1 {
+  color: cadetblue;
+}
+
+h2 {
+  color: chocolate;
+  font-size: large;
+}
+
+ul {
+  list-style-type: none;
+}
+
+li {
+  margin: 0 0 3px 0;
+}
+
+.link {
+  color: darkblue;
+}
