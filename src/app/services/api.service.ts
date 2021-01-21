@@ -13,12 +13,6 @@ export class ApiService {
   private formatErrors(error: any) {
     const err = error.error ? error.error : error;
     console.log(err); /*verbose*/
-    if (err.error){
-      confirm(err.error); /*verbose*/
-    }
-    else if(err.message) {
-      confirm(err.message);
-    }
     return [];
   }
 

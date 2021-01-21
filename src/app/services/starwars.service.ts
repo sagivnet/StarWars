@@ -13,15 +13,15 @@ export class StarwarsService {
   }
 
    get(fullUrl='https://swapi.dev/api/films/'){
-    
+
+    // extract parameters
     var pattern = "api/";
     var url = fullUrl.substr(fullUrl.indexOf(pattern)+ pattern.length); 
     var category = url.substr(0,url.indexOf('/'));
     var id =  url.substr(url.indexOf('/')+1,url.lastIndexOf('/') -url.indexOf('/')-1 )
 
-    //patch
+    // patch
     category = category == 'characters'? 'people' : category === 'residents'? 'people' : category === 'homeworld'? 'planets' :  category
-
     
     let promise = this.apiService.get(url)
     promise.toPromise().then(res => {
@@ -40,6 +40,7 @@ export class StarwarsService {
      return {res: promise.toPromise(), id}
  }
 
+ // get information from local storage
  getLocaly(category, id) {
     let element;
     if(this.data[category]){

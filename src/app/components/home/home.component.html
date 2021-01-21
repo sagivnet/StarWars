@@ -4,6 +4,7 @@
         <button *ngIf="film.like == 2" mat-icon-button style="color: red;" (click)="onLike(film)"> <mat-icon >favorite</mat-icon> </button>
         <button *ngIf="film.like == 1" mat-icon-button style="color: red;" (click)="onLike(film)"> <mat-icon >favorite_border</mat-icon> </button>
         <button *ngIf="film.like != 1 && film.like != 2" mat-icon-button style="color: black;" (click)="onLike(film)"> <mat-icon >favorite_border</mat-icon> </button>
+        
         <span class="spacer"></span>
         <span (click)="onSelect(film)">{{film.title}}</span> 
     </a>

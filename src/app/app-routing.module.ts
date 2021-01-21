@@ -6,14 +6,13 @@ import { ErrorComponent } from './components/error/error.component';
 
 const routes: Routes = [
   { path: '', redirectTo: '/films', pathMatch: 'full'},
-  { path: '', redirectTo: '/films', pathMatch: 'full'},
   { path: 'films', component: HomeComponent },
   { path: 'films/:id', component: DetailsComponent },
   { path: 'people/:id', component: DetailsComponent },
-  { path: 'characters/:id', component: DetailsComponent },//TODO: redirect
-  { path: 'residents/:id', component: DetailsComponent },//TODO: redirect
+  { path: 'characters/:id',redirectTo: '/people/:id', pathMatch: 'full' },
+  { path: 'residents/:id',redirectTo: '/people/:id', pathMatch: 'full' },
   { path: 'planets/:id', component: DetailsComponent },
-  { path: 'homeworld/:id', component: DetailsComponent },//TODO: redirect
+  { path: 'homeworld/:id',redirectTo: '/planets/:id', pathMatch: 'full' },
   { path: 'starships/:id', component: DetailsComponent },
   { path: 'vehicles/:id', component: DetailsComponent },
   { path: 'species/:id', component: DetailsComponent },
