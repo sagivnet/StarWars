@@ -43,6 +43,7 @@ export class StarwarsService {
 
  // get information from local storage
  getLocaly(category, id) {
+     
     let element;
     if(this.data[category]){
         element =  this.data[category].find(e => e.id === id);

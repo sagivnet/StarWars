@@ -10,6 +10,7 @@ import { StarwarsService } from 'src/app/services/starwars.service';
 export class DetailsComponent implements OnInit {
 
   element; // element to display
+  image = null;
   elementLinks = []; 
   elementStrings = [];
 
@@ -31,6 +32,9 @@ export class DetailsComponent implements OnInit {
       let url = 'https://swapi.dev/api/'+ category +'/'+id+'/';
       this.starwarsService.get(url).res
       .then(res =>{
+        if (category == 'films'){
+          this.image = '/assets/'+res.title.toLowerCase().replaceAll(' ','_')+'.jpg';
+        }
         this.element = res;
         // extract information from element
         this.updateInfo()
@@ -61,6 +65,10 @@ export class DetailsComponent implements OnInit {
   private updateInfo(){
 
     for (const [key, value] of Object.entries(this.element)) {
+      if (key == 'image') {
+        this.image = value;
+        continue;
+      }
       switch(typeof value) {
 
           case 'number':  break; // id
