@@ -11,6 +11,7 @@ const routes: Routes = [
   { path: 'people/:id', component: DetailsComponent },
   { path: 'characters/:id',redirectTo: '/people/:id', pathMatch: 'full' },
   { path: 'residents/:id',redirectTo: '/people/:id', pathMatch: 'full' },
+  { path: 'pilots/:id',redirectTo: '/people/:id', pathMatch: 'full' },
   { path: 'planets/:id', component: DetailsComponent },
   { path: 'homeworld/:id',redirectTo: '/planets/:id', pathMatch: 'full' },
   { path: 'starships/:id', component: DetailsComponent },

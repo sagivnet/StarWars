@@ -21,12 +21,6 @@ export class DetailsComponent implements OnInit {
     let id: number = parseInt(this.route.snapshot.paramMap.get('id'));
     let category: string = this.router.url.substring(1,this.router.url.lastIndexOf('/'));
 
-    // patch
-    category = category == 'characters'? 'people' : category === 'residents'? 'people' : category === 'homeworld'? 'planets' :  category
-
-    // try to get from local storage
-    this.element = this.starwarsService.getLocaly(category, id)
-
     // if not found send a get request
     if(!this.element) {
       let url = 'https://swapi.dev/api/'+ category +'/'+id+'/';
@@ -93,7 +87,7 @@ export class DetailsComponent implements OnInit {
             break;
             
           case 'string': 
-            if (key == 'title' || key == 'image' || key == 'url') break;
+            if (key == 'title' || key == 'image' || key == 'url' ) break;
 
             if(value.search('http') != -1){ // single link
               let promise = this.starwarsService.get(value).res

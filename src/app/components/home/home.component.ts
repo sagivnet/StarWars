@@ -18,7 +18,8 @@ export class HomeComponent implements OnInit {
     // get all the films
    this.starwarsService.get().res.then(res => {
      // get films likes from cookies
-     this.films = res.results.map(film => {
+     this.films = res.results.map((film, index) => {
+        film.id = index+1;
        let cookie = this.coockieService.get(film.episode_id);
        if (cookie) {
          film.like = cookie;
@@ -34,7 +35,7 @@ export class HomeComponent implements OnInit {
 
   // Select Event
   onSelect(film) {
-    this.router.navigate(['/films', film.episode_id]);
+    this.router.navigate(['/films/', film.id]);
   }
 
   // Like Event
