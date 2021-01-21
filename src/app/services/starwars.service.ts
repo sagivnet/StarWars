@@ -28,6 +28,7 @@ export class StarwarsService {
         if(category == 'films' && !id  ){
             this.data[category] = res.results.map(e => {
                 e.id = e.episode_id;
+                e.image = '/assets/'+e.title.toLowerCase().replaceAll(' ','_')+'.jpg';
                 return e;
             });
         } else {

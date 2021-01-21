@@ -18,3 +18,7 @@ li {
 .link {
   color: darkblue;
 }
+
+.image {
+  max-height: 300px;
+}
